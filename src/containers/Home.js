@@ -1,25 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Header from '../components/Header';
+import idGen from '../helpers/igGen';
+import StudentList from '../components/StudentList';
+import StudentForm from '../components/StudentForm';
+
 
 class Home extends Component {
     state = {
-        students: [
-            { firstName: 'Micha', lastName: 'Malala', age: '14', commission: '6ta', email: 'micha@malala.com' },
-            { firstName: 'Micha', lastName: 'Malala', age: '14', commission: '6ta', email: 'micha@malala.com' }
-        ]
+        studentModel: {
+            firstName: '',
+            lastName: '',
+            age: '',
+            comission: '',
+            email: '',
+            id: '',
+        },
+        studentsList: []
+    };
 
-    }
-    //     render(
-    //     <React.Fragment>
-    //     <div>Holitas</div>
-    //     </React.Fragment >
-    //   );
+    addStudent = (values) => {
+        let newStudentsList = [...this.state.studentsList, { ...values, id: idGen('stu') }];
+        this.setState({ studentsList: newStudentsList })
+    };
+
     render() {
         return (
-            <React.Fragment>
-                <Header pageTitle='PepitoIsHere' />
-                {this.state.students.map(e=><p>{e.firstName}</p>)}
-            </React.Fragment>
+            <Fragment>
+                <Header pageTitle={'none'} />
+                <StudentForm data={this.state.studentModel} submit={this.addStudent} />
+                <StudentList data={this.state.studentsList} />
+            </Fragment>
         )
     }
 }
