@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap");
+
+body {
+  font-family: "Big Shoulders Text", cursive;
+  background: turquoise;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  display: none;
+  &.open {
+    display: block;
+  }
+  .modal-container {
+    background-color: white;
+    padding: 16px 24px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    //toda propiedad de estilo, en vez de sumarse, limita al máximo solicitado
+  }
+}
+

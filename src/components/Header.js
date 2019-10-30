@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Header = (props) => {
+const Header = ({title, addStudent}) => {
     return (
-        <header>{props.pageTitle}</header>
+        <div>
+            <h1>{title}</h1>
+        <button type={'button'} onClick={() => addStudent()}>Abrir modal</button>
+        </div>
     )
 }
 
