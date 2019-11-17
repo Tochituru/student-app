@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Header = ({title, addStudent}) => {
+const Header = ({title, newStudentModal}) => {
     return (
         <div>
             <h1>{title}</h1>
-        <button type={'button'} onClick={() => addStudent()}>Abrir modal</button>
+        <button type={'button'} onClick={() => newStudentModal()}>Agregar +</button>
         </div>
     )
 }

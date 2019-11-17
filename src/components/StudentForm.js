@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 const studentValidationSchema = Yup.object().shape({
     firstName: Yup.string().required('No podés dejar el campo vacío').min(3),
-    lastName: Yup.string().required('No podés dejar el campo vacío').min(3).max(20),
+    lastName: Yup.string().required('No podés dejar el campo vacío').min(8).max(20),
     age: Yup.number('Solo escribí números')
         .required('No podés dejar el campo vacío')
         .positive('No pongas un - por delante')
@@ -16,21 +16,27 @@ const studentValidationSchema = Yup.object().shape({
 
 })
 
-const StudentForm = (props) => {
-    let { data, submit } = props
+const StudentForm = ({data, submit}) => {
     return (
-        <Formik initialValues={data} onSubmit={submit} validationSchema={studentValidationSchema}>
+        <Formik 
+        initialValues={data} 
+        onSubmit={submit} 
+        validationSchema={studentValidationSchema}
+        enableReinitialize>
             {(props) => {
                 return (
                     <Form>
-                        <Field type={'text'} name={'firstName'} placeholder={'nombre:'} />
-                        {/* {touched.firstName && errors.firstName} */}
+                        <Field type={'text'} 
+                        name={'firstName'} 
+                        placeholder={'nombre:'} />
                         <ErrorMessage name={'firstName'} />
-                        <Field type={'text'} name={'lastName'} placeholder={'apellido:'} />
+                        <Field type={'text'} 
+                        name={'lastName'} placeholder={'apellido:'} />
                         <ErrorMessage name={'lastName'} />
-                        <Field type={'number'} name={'age'} placeholder={'edad:'} />
+                        <Field type={'number'} 
+                        name={'age'} placeholder={'edad:'} />
                         <ErrorMessage name={'age'} />
-                        <Field type={'text'} name={'email'} placeholder={'email:'} />
+                        <Field type={'text'} name={'email'} placeholder={'correo eléct.:'} />
                         <ErrorMessage name={'email'} />
                         <Field type={'text'} name={'comission'} placeholder={'comisión:'} />
                         <ErrorMessage name={'comission'} />

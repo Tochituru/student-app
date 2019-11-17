@@ -6,7 +6,7 @@ const Modal = ({isOpen, toggle, title, children}) => {
             <div className={'modal-container'}>
                 <p>{title}</p>
                 {children}
-                <button type='button' onClick={(e) => toggle(e)}>Cerrar modal</button>
+                <button type='button' onClick={(e) => toggle(e)}>Cerrar</button>
             </div>
         </div>
     )
